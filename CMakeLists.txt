@@ -72,6 +72,10 @@ else()
     add_library(spdlog src/spdlog.cpp ${SPDLOG_ALL_HEADERS})
 endif()
 
+if (SPDLOG_PIC)
+    set_property(TARGET spdlog PROPERTY POSITION_INDEPENDENT_CODE ON)
+endif ()
+
 add_library(spdlog::spdlog ALIAS spdlog)
 
 target_compile_definitions(spdlog PUBLIC SPDLOG_COMPILED_LIB)
